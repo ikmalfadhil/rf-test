@@ -15,7 +15,7 @@ ${symbols_btn}    //*[@class="cq-menu-btn"]
 ${volatility_btn}    //*[@class="sc-mcd__item sc-mcd__item--1HZ10V "] 
 ${volatility_txt}    //*[@class="cq-symbol"]
 ${sidebar}    //*[@class="sidebar__items"]
-${purchase_btn}    //*[@class="dt_purchase_call_button"]
+${purchase_btn}    //*[@id="dt_purchase_call_button"]
 ${contract}    //*[@class="dc-result__caption-wrapper"]
 
 *** Test Cases ***
@@ -28,7 +28,6 @@ login
     Input Text    txtEmail    ikmal@besquare.com.my
     Input Password    txtPass    Ael5661!
     Click Element    //button[@name="login"]
-    # Wait Until Page Contains Element    ${deposit_btn}    10
     Wait Until Page Contains Element    ${dropdown_btn}    10
     Click Element    ${dropdown_btn}
     Wait Until Page Contains Element    ${dropdown_display}    10
