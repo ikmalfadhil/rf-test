@@ -4,8 +4,8 @@ Library    XML
 
 *** Variables ***
 ${DERIV_URL}    https://app.deriv.com
-${EMAIL}    ikmal@besquare.com.my
-${PASSWORD}    Ael5661!
+${EMAIL}    *******
+${PASSWORD}    *******
 ${real_btn}    //*[@id="dropdown-display"]/span
 ${deposit_btn}    //*[text()="Deposit"]//parent::button
 ${closemyaccount_btn}    //*[text()="Close my account"]//parent::button

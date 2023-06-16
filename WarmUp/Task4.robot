@@ -20,8 +20,8 @@ ${days_container}    //*[@class="dc-input__field"]
 ${barrier}    //*[@id="dt_barrier_1_input"]
 ${payout_btn}    //*[text()="Payout"]//parent::button
 ${amount_txt}    //*[@id="dt_amount_input"]
-${lower_btn}    //*[@class="btn-purchase__shadow-wrapper"]
-${card}    //*[@class="dc-contract-card__wrapper"]
+${lower_btn}    //*[@id="dt_purchase_put_button"]
+${error}    //*[text()="Contracts more than 24 hours in duration would need an absolute barrier."]
 
 *** Test Cases ***
 login
@@ -30,8 +30,8 @@ login
     Wait Until Page Contains Element    dt_login_button    10
     Click Element    dt_login_button
     Wait Until Page Contains Element    txtEmail    10
-    Input Text    txtEmail    ikmal@besquare.com.my
-    Input Password    txtPass    Ael5661!
+    Input Text    txtEmail    *******
+    Input Password    txtPass    *******
     Click Element    //button[@name="login"]
     Wait Until Page Contains Element    ${dropdown_btn}    10
     Click Element    ${dropdown_btn}
@@ -53,17 +53,14 @@ login
     Wait Until Element Is Visible    ${highlow}    10
     Click Element    ${highlow}
     Wait Until Page Contains Element    ${days_container}    10
-    Double Click Element    ${days_container}
-    Clear Element Text    ${days_container}
-    Input Text    ${days_container}    2
-    Double Click Element    ${barrier}
-    Clear Element Text    ${barrier}
+    Press Keys    ${amount_txt}    CTRL+A+BACKSPACE
+    Input Text    ${amount_txt}    10.00
+    Press Keys    ${days_container}    CTRL+A+BACKSPACE
+    Input Text    ${days_container}    1
     Press Keys    ${barrier}    CTRL+A+BACKSPACE
     Input Text    ${barrier}    -0.1
     Click Element    ${payout_btn}
-    Double Click Element    ${amount_txt}
-    Press Keys    ${amount_txt}    CTRL+A+BACKSPACE
-    Input Text    ${amount_txt}    10.00
-    Wait Until Element Is Enabled    ${lower_btn}
+    Wait Until Page Contains Element    ${error}
+    Element Should Be Disabled    ${lower_btn}
     Click Element    ${lower_btn}
-    Wait Until Element Is Visible    ${card}
+    # Wait Until Element Is Visible    ${card}
